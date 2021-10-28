@@ -4,6 +4,6 @@ import "./styles.scss";
 
 export default function Appointment(props) {
   return (
-    <article className="appointment"> {props.time ? "Appointment at" + props.time : "No Appointment" }</article>
+    <article className="appointment"> {props.time ? "Appointment at " + props.time : "No Appointment" }</article>
   )
 }
