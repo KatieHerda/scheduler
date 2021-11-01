@@ -15,7 +15,7 @@ export default function Application(props) {
     interviewers: {}
   })
 
-  //api calls to fetch data for days, appointments, and interviewers object info
+  //Request to api server that sets state for days, appointments, and interviewers.
   useEffect(() => {
     Promise.all([
       axios.get('api/days'),
@@ -29,6 +29,10 @@ export default function Application(props) {
   const setDay = day => setState({...state, day});
   const dailyAppointments = getAppointmentsForDay(state, state.day);
   const dailyInterviewers = getInterviewersForDay(state, state.day);
+
+  function bookInterview(id, interview) {
+    console.log(id, interview);
+  }
   
   const Appointments = dailyAppointments.map(appointment => {
     const interview = getInterview(state, appointment.interview);
@@ -39,6 +43,7 @@ export default function Application(props) {
       time={appointment.time}
       interview={interview}
       interviewers={dailyInterviewers}
+      bookInterview={bookInterview}
       />
     )
   });
