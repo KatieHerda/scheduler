@@ -39,9 +39,11 @@ export default function useApplicationData() {
     };
 
     return axios.put(`/api/appointments/${id}`, { interview }).then((res) => {
+      const days = updateSpots(state, false);
       setState({
         ...state,
         appointments,
+        days
       });
     });
   }
@@ -60,11 +62,44 @@ export default function useApplicationData() {
     return axios
       .delete(`/api/appointments/${id}`, { interview })
       .then((res) => {
+        const days = updateSpots(state, true);
         setState({
           ...state,
           appointments,
+          days
         });
       });
+  }
+
+  function updateSpots(state, cancelInterview, id) {
+    const { day, days, appointments } = state;
+
+    //Find correct day object inside days array (array of day objects)
+    const foundDay = days.find((d) => d.name === day);
+
+    //find total number of spots for day
+    let spots = 0;
+
+    //Find available appointments for a given day
+    for (let appointmentId of foundDay.appointments) {
+      if (appointments[appointmentId].interview === null) {
+        //how many nulls?
+        spots++;
+      }
+    }
+
+    //If cancelling an interview, we can add an additional spot (null)
+    //If adding interview, we can subtract a spot
+    if (cancelInterview) {
+      spots++
+    } else {
+      spots --;
+    } 
+
+    const newDay = {...foundDay, spots};
+    const newDays = days.map(d => d.name === day ? newDay : d)
+
+    return newDays;
   }
 
   //must return an object containing { state, setDay, bookInterview, cancelInterview }
