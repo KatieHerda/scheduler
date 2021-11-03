@@ -39,7 +39,7 @@ export default function useApplicationData() {
     };
 
     return axios.put(`/api/appointments/${id}`, { interview }).then((res) => {
-      const days = updateSpots(state, false);
+      const days = updateSpots(state, false, id);
       setState({
         ...state,
         appointments,
@@ -62,7 +62,7 @@ export default function useApplicationData() {
     return axios
       .delete(`/api/appointments/${id}`, { interview })
       .then((res) => {
-        const days = updateSpots(state, true);
+        const days = updateSpots(state, true, id);
         setState({
           ...state,
           appointments,
@@ -88,14 +88,18 @@ export default function useApplicationData() {
       }
     }
 
-    //If cancelling an interview, we can add an additional spot (null)
-    //If adding interview, we can subtract a spot
+    /*
+      If cancelling an interview, we can add an additional spot
+      If adding interview, we can subtract a spot but only IF there is no interview (null)
+      We don't want to add a spot on edit.
+    */
     if (cancelInterview) {
       spots++
-    } else {
+    } else if (!cancelInterview && appointments[id].interview === null) {
       spots --;
     } 
 
+    //Create new 
     const newDay = {...foundDay, spots};
     const newDays = days.map(d => d.name === day ? newDay : d)
 
