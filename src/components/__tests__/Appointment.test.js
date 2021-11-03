@@ -11,11 +11,7 @@ import { render } from "@testing-library/react"
 //We import the component that we are testing
 import Appointment from "components/Appointment";
 
-/*
-We wrap related tests in a describe function
-If props are required for your component, you need to fake them
-*/
-
+//Interviewers data to pass to interviewers in appProps
 const interviewers = [
   {
     id: 1,
@@ -44,6 +40,10 @@ const appProps = {
   bookInterview: () => {}
 }
 
+/*
+We wrap related tests in a describe function
+If props are required for your component, you need to fake them
+*/
 describe("Appointment", () => {
   // A test that renders a React Component
   it('renders without crashing', () => {
