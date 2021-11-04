@@ -11,9 +11,8 @@ import {
 } from "helpers/selectors";
 
 export default function Application(props) {
-  const { state, setDay, bookInterview, cancelInterview } =
-    useApplicationData();
-    
+  const { state, setDay, bookInterview, cancelInterview } = useApplicationData();
+
   const dailyAppointments = getAppointmentsForDay(state, state.day);
   const dailyInterviewers = getInterviewersForDay(state, state.day);
 

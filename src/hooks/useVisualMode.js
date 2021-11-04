@@ -31,7 +31,7 @@ export default function useVisualMode(initial) {
     setMode((prev) => {
       const historyArr = [...history];
 
-      //if already at initial, return initial. first --> first, not []
+      //if already at initial, return initial.
       if (historyArr < 1) {
         return prev;
       }

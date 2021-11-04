@@ -12,6 +12,7 @@ export default function Form(props) {
     setInterviewer(null);
   }
 
+  //calls reset function to set student clear student input, set interviewer to null, and cancel interview.
   function cancel() {
     reset();
     props.onCancel();
@@ -23,10 +24,6 @@ export default function Form(props) {
       setError("Student name cannot be blank");
       return;
     }
-    // if (interviewer === null) {
-    //   setError("You must select an interviewer");
-    //   return;
-    // }
     setError("");
     props.onSave(student, interviewer);
   }
@@ -54,12 +51,8 @@ export default function Form(props) {
       </section>
       <section className="appointment__card-right">
         <section className="appointment__actions">
-          <Button danger onClick={cancel}>
-            Cancel
-          </Button>
-          <Button confirm onClick={validate}>
-            Save
-          </Button>
+          <Button danger onClick={cancel}>Cancel</Button>
+          <Button confirm onClick={validate}>Save</Button>
         </section>
       </section>
     </main>

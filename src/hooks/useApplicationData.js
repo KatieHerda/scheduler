@@ -27,6 +27,7 @@ export default function useApplicationData() {
     });
   }, []);
 
+  //Function to book an interview and update state with new interview
   function bookInterview(id, interview) {
     const appointment = {
       ...state.appointments[id],
@@ -43,11 +44,12 @@ export default function useApplicationData() {
       setState({
         ...state,
         appointments,
-        days
+        days,
       });
     });
   }
 
+  //Function to delete an interview and update state with new empty slot
   function cancelInterview(id, interview) {
     const appointment = {
       ...state.appointments[id],
@@ -66,11 +68,12 @@ export default function useApplicationData() {
         setState({
           ...state,
           appointments,
-          days
+          days,
         });
       });
   }
 
+  //Function to update shown number of spots under day of the week
   function updateSpots(state, cancelInterview, id) {
     const { day, days, appointments } = state;
 
@@ -83,29 +86,25 @@ export default function useApplicationData() {
     //Find available appointments for a given day
     for (let appointmentId of foundDay.appointments) {
       if (appointments[appointmentId].interview === null) {
-        //how many nulls?
         spots++;
       }
     }
 
-    /*
-      If cancelling an interview, we can add an additional spot
-      If adding interview, we can subtract a spot but only IF there is no interview (null)
-      We don't want to add a spot on edit.
-    */
+    //Add an additional spot if cancelling an interview. Subtract a spot if adding interview but only IF there is no interview (null)
     if (cancelInterview) {
-      spots++
+      spots++;
     } else if (!cancelInterview && appointments[id].interview === null) {
-      spots --;
-    } 
+      spots--;
+    }
 
-    //Create new 
-    const newDay = {...foundDay, spots};
-    const newDays = days.map(d => d.name === day ? newDay : d)
+    //Create new found day object with spots key
+    const newDay = { ...foundDay, spots };
+
+    //create newDays array, replacing any information about given day as neccesary
+    const newDays = days.map((d) => (d.name === day ? newDay : d));
 
     return newDays;
   }
 
-  //must return an object containing { state, setDay, bookInterview, cancelInterview }
   return { state, setDay, bookInterview, cancelInterview };
 }
