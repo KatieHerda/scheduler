@@ -8,13 +8,13 @@ This project uses React, JSX, Storybook, Jest, Cypress, Node, Express.
 ## Final Product
 Here are some examples of what "Interview Scheduler" looks like. 
 
-<img alt="Full Day, No Spots Available" width="500" src="https://github.com/KatieHerda/scheduler/blob/master/docs/MondayNoSpots.png?raw=true"> <img/>
+<img alt="Full Day, No Spots Available" width="600" src="https://github.com/KatieHerda/scheduler/blob/master/docs/MondayNoSpots.png?raw=true"> <img/>
 
-<img alt="Creating New Interview" width="500" src="https://github.com/KatieHerda/scheduler/blob/master/docs/SelectDayCreate.png?raw=true"> <img/>
+<img alt="Creating New Interview" width="600" src="https://github.com/KatieHerda/scheduler/blob/master/docs/SelectDayCreate.png?raw=true"> <img/>
 
-<img alt="New Interview Booked" width="500" src="https://github.com/KatieHerda/scheduler/blob/master/docs/NewInterviewBooked.png?raw=true"> <img/>
+<img alt="New Interview Booked" width="600" src="https://github.com/KatieHerda/scheduler/blob/master/docs/NewInterviewBooked.png?raw=true"> <img/>
 
-<img alt="Delete Interview" width="500" src="https://github.com/KatieHerda/scheduler/blob/master/docs/DeleteInterview.png?raw=true"> <img/>
+<img alt="Delete Interview" width="600" src="https://github.com/KatieHerda/scheduler/blob/master/docs/DeleteInterview.png?raw=true"> <img/>
 
 ## Getting Started
  1. Clone a copy of the scheduler repo to your dev machine
