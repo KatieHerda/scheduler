@@ -23,10 +23,14 @@ Here are some examples of what "Interview Scheduler" looks like.
 ### Dependencies 
   - Axios
   - @testing-library/react-hooks
+  - Storybook
+  - Jest
+  - Cypress
   - React
      - npm install react@^16.9.0
   - React-test-renderer
       - npm install --save-dev react-test-renderer@^16.9.0
+
 
 
 ### Running Webpack Development Server, Jest Test Framework, Storybook Visual Testbed
